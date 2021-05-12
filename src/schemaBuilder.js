@@ -53,3 +53,10 @@ export default (data) =>
         resolvers: resolver(data),
         logger: { log: (e) => console.log(e) }, // eslint-disable-line no-console
     });
+
+// Same as above, simply returning the object before making it executable.
+// This lets you use it with a custom apollo server or etc.
+export const getPlainSchema = (data) => ({
+    typeDefs: printSchema(getSchemaFromData(data)),
+    resolvers: resolver(data),
+});
